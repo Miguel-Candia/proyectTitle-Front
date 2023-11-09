@@ -1,11 +1,29 @@
 import React from "react";
 
+import '../css/Chat.css'
+import InboxPeople from "../components/InboxPeople";
+import Messages from "../components/Messages";
+import ChatSelect from "../components/ChatSelect";
+
 export  const ChatPage = () =>{
 
     return(
-        <div>
-            <h1>Chat Page</h1>
+        <div className="messaging">
+        <div className="inbox_msg">
+
+            <InboxPeople/>
+
+            <ChatSelect/>
+            {/* <Messages/> */}
+           
+
+
+         
+
         </div>
+
+
+    </div>
     )
 
 }
