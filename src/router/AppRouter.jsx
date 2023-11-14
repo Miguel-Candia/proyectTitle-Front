@@ -6,8 +6,6 @@ import {
     Navigate
 } from 'react-router-dom';
 import { HomePage } from '../pages/HomePage';
-import { ChatPage } from '../pages/ChatPage';
-import { AuthRouter } from './AuthRouter';
 import { AuthContext } from '../auth/AuthContext';
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';

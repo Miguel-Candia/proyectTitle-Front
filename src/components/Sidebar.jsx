@@ -1,15 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import SidebarChatItem from './SidebarChatItem'
+import { ChatContext } from '../context/chat/ChatContext'
+import { AuthContext } from '../auth/AuthContext';
 
 const Sidebar = () => {
 
-    const chats = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    const {chatState} = useContext(ChatContext);
+    const {auth} = useContext(AuthContext);
+
+  //  console.log(chatState);
+    const usuarios = chatState.usuarios.length > 0 ? chatState.usuarios[0] : [];
+
+
 
     return (
         <div className="inbox_chat">
             {
-                chats.map((chat) => (
-                    <SidebarChatItem key={chat} />
+                usuarios
+                .filter( user => user.uid !== auth.uid) // si son iguales los id filtra
+                .map(( usuario ) => (
+                    <SidebarChatItem key={usuario.uid} usuario={usuario} />
                 ))
             }
 

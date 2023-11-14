@@ -1,5 +1,7 @@
-import React, { createContext, useCallback, useState } from 'react'
+import React, { createContext, useCallback, useState, useContext } from 'react'
 import { fetchConToken, fetchSinToken } from '../helpers/fetch';
+import { ChatContext } from '../context/chat/ChatContext';
+import { types } from '../types/types';
 
 
 
@@ -17,7 +19,8 @@ const initialState = {
 
 export const AuthProvider = ({ children }) => {
 
-  const [auth, setAuth] = useState(initialState)
+  const [auth, setAuth] = useState(initialState);
+  const {dispatch} = useContext(ChatContext);
 
   const login = async (email, password) => {
 
@@ -35,8 +38,6 @@ export const AuthProvider = ({ children }) => {
         name: usuario.nombre,
         email: usuario.email
       });
-      console.log('Autenticado')
-
 
     }
 
@@ -60,8 +61,6 @@ export const AuthProvider = ({ children }) => {
         name: usuario.nombre,
         email: usuario.email
       });
-
-      console.log('Registrado')
       return true;
     };
 
@@ -101,7 +100,6 @@ export const AuthProvider = ({ children }) => {
         name: usuario.nombre,
         email: usuario.email
       });
-      console.log('Autenticado')
       return true;
 
     } else {
@@ -123,6 +121,11 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
 // Quita el Token
     localStorage.removeItem('token');
+
+    dispatch({
+      type: types.cerrarSesion
+    })
+
     setAuth({
       checking: false,
       logged: false,

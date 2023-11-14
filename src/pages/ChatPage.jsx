@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import '../css/Chat.css'
 import InboxPeople from "../components/InboxPeople";
 import Messages from "../components/Messages";
 import ChatSelect from "../components/ChatSelect";
+import { ChatContext } from "../context/chat/ChatContext";
 
 export  const ChatPage = () =>{
+
+    const {chatState} = useContext(ChatContext)
 
     return(
         <div className="messaging">
@@ -13,8 +16,14 @@ export  const ChatPage = () =>{
 
             <InboxPeople/>
 
-            <ChatSelect/>
-            {/* <Messages/> */}
+            
+            {
+                ( chatState.chatActivo )
+                ?<Messages/> 
+                :<ChatSelect/>
+            }
+
+
            
 
 
