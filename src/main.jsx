@@ -6,5 +6,4 @@ import { ChatApp } from './ChatApp'
 ReactDOM.createRoot(document.getElementById('root')).render(
 
     <ChatApp />
-
 )

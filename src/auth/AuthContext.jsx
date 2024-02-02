@@ -13,7 +13,8 @@ const initialState = {
   checking: true,
   logged: false,
   name: null,
-  email: null
+  email: null,
+  experto: false
 }
 
 
@@ -36,7 +37,8 @@ export const AuthProvider = ({ children }) => {
         checking: false,
         logged: true,
         name: usuario.nombre,
-        email: usuario.email
+        email: usuario.email,
+        experto: usuario.experto
       });
 
     }
@@ -59,7 +61,8 @@ export const AuthProvider = ({ children }) => {
         checking: false,
         logged: true,
         name: usuario.nombre,
-        email: usuario.email
+        email: usuario.email,
+        experto: usuario.experto
       });
       return true;
     };
@@ -81,6 +84,7 @@ export const AuthProvider = ({ children }) => {
         logged: false,
         name: null,
         email: null,
+        experto:false,
       });
 
       return false;
@@ -98,7 +102,8 @@ export const AuthProvider = ({ children }) => {
         checking: false,
         logged: true,
         name: usuario.nombre,
-        email: usuario.email
+        email: usuario.email,
+        experto: usuario.experto
       });
       return true;
 
@@ -109,7 +114,8 @@ export const AuthProvider = ({ children }) => {
         checking: false,
         logged: false,
         name: null,
-        email: null
+        email: null,
+        experto: false
       });
 
       return false;

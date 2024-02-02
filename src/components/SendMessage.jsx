@@ -1,25 +1,25 @@
 import React, { useContext, useState } from 'react'
-import {SocketContext} from '../context/SocketContext'
+import { SocketContext } from '../context/SocketContext'
 import { AuthContext } from '../auth/AuthContext';
 import { ChatContext } from '../context/chat/ChatContext';
 
 const SendMessage = () => {
 
-    const [mensaje,setMensaje] = useState('');
+    const [mensaje, setMensaje] = useState('');
     const { socket } = useContext(SocketContext);
     const { auth } = useContext(AuthContext);
     const { chatState } = useContext(ChatContext);
 
 
 
-    const onChange = ({target}) =>{
+    const onChange = ({ target }) => {
         setMensaje(target.value)
     }
 
-    const onSubmit = (ev) =>{
+    const onSubmit = (ev) => {
         ev.preventDefault();
 
-        if(mensaje.length === 0){ return;}
+        if (mensaje.length === 0) { return; }
 
         setMensaje('');
 
@@ -29,7 +29,7 @@ const SendMessage = () => {
         //     para:// UID del usuario q recibe el mensaje
         //     mensaje: // lo q quiere enviar
         // }
-        socket.emit('mensaje-personal',{
+        socket.emit('mensaje-personal', {
             de: auth.uid,
             para: chatState.chatActivo,
             mensaje
@@ -43,16 +43,35 @@ const SendMessage = () => {
     return (
         <form onSubmit={onSubmit}>
             <div className="type_msg row">
+
+                <input
+                    type="file"
+                    id="fileInput"
+                    style={{ display: "none" }}
+                />
+                <img
+                    src="/img/adjuntararchivo.svg"
+                    alt="Adjuntar Archivo"
+                    className="msg_send_btn_file"
+                    onClick={() => document.getElementById('fileInput').click()}
+                />
+
+                <img
+                    src="/img/videollamada.svg"
+                    alt="Video llamada"
+                    className="msg_send_btn_file"
+                />
+
                 <div className="input_msg_write col-sm-9">
-                    <input 
-                    type="text" 
-                    className="write_msg" 
-                    placeholder="Mensaje..." 
-                    value={mensaje}
-                    onChange={onChange}
+                    <input
+                        type="text"
+                        className="write_msg"
+                        placeholder="Mensaje..."
+                        value={mensaje}
+                        onChange={onChange}
                     />
                 </div>
-                <div className="col-sm-3 text-center">
+                <div className="col-sm-1 text-center">
                     <button className="msg_send_btn mt-3" type="submit">
                         enviar
                     </button>

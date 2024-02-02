@@ -1,0 +1,11 @@
+
+a {
+	font-size: 14px;
+	line-height: 1.7;
+	color: #fff !important;
+	margin: 0px;
+	transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+}

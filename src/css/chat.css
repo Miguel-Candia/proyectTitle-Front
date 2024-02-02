@@ -205,6 +205,16 @@ img {
     width: 70px;
 }
 
+.msg_send_btn_file {
+    background: #fff;
+
+    color: #fff;
+    cursor: pointer;
+    font-size: 17px;
+    height: 33px;
+    width: 70px;
+}
+
 
 .msg_history {
     height: 90%;
